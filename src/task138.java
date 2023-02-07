@@ -49,8 +49,8 @@ public class task138 {
             }
         }
         catch (Exception e){
-            System.out.println("Неккоректное значение");
-            System.out.println(e);
+            System.out.println("Некорректное значение");
+//            System.out.println(e);
         }
     }
 }
