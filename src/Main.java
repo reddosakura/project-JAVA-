@@ -1,134 +1,102 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.stream.IntStream;
+import java.util.*;
+
 public class Main {
-    public static int factorial(int a)
-    {
-        int result = 1;
-        for(int i = 1; i <= a; i++)
-        {
-            result *= i;
-        }
-        return result;
-    }
-    public static void MenuAndMore()
-    {
-        System.out.println("Выберите операцию(число) затем введите значения:\n (1) Сложение\n (2) Вычитания\n (3) Деление\n (4) Умножение\n (5) Возведение в степень\n (6) Факториал\n (0) Выход\n\n\nВведите команду:");
-//        String comm;
-//        ArrayList<int> comms = new ArrayList<int>(){1, 2, 3, 4, 5};
-//        boolean running = true;
-        while (true)
-        {
-            try {
-                Scanner scan = new Scanner(System.in);
-                int comm = scan.nextInt();
-                if (comm == 0)
-                {
-                    break;
-                }
-                switch(comm) {
-                    case 1:
-//                        try{
-                            System.out.println("Введите первое число: ");
-                            int value1 = scan.nextInt();
-                            System.out.println("Введите второе число: ");
-                            int value2 = scan.nextInt();
-                            System.out.println("Результат сложения:");
-                            System.out.println(value1 + value2);
-//                            continue;
-//                        System.out.println("-");
-//                        }
-//                        catch (Exception e) {
-//                            System.out.println("Некорректный ввод");
-//                            continue;
-//                        }
-                        break;
-                    case 2:
-//                        try{
-                            System.out.println("Введите первое число: ");
-                            int value3 = scan.nextInt();
-                            System.out.println("Введите второе число: ");
-                            int value4 = scan.nextInt();
-                            System.out.println("Результат вычитания:");
-                            System.out.println(value3 - value4);
-//                            continue;
-//                        System.out.println("-");
-//                        }
-//                        catch (Exception e) {
-//                            System.out.println("Некорректный ввод");
-//                            continue;
-//                        }
-                        break;
-                    case 4:
-//                        try{
-                            System.out.println("Введите первое число: ");
-                            int value5 = scan.nextInt();
-                            System.out.println("Введите второе число: ");
-                            int value6 = scan.nextInt();
-                            System.out.println("Результат умножения:");
-                            System.out.println(value5 * value6);
-//                            continue;
-//                        System.out.println("-");
-//                        }
-//                        catch (Exception e) {
-//                            System.out.println("Некорректный ввод");
-//                            continue;
-//                        }
-                        break;
-                    case 3:
-                        try{
-                            System.out.println("Введите первое число: ");
-                            int value7 = scan.nextInt();
-                            System.out.println("Введите второе число: ");
-                            int value8 = scan.nextInt();
-                            System.out.println("Результат деления:");
-                            System.out.println(value7 / value8);
-//                            continue;
-//                        System.out.println("-");
-                         }
-                        catch (ArithmeticException ae)
-                        {
-                            System.out.println("Деление на ноль невозможно");
+    public static void init() {
+        String name = null;
+        String size = null;
+        Integer price = null;
+        ArrayList<ingredient> ings = new ArrayList<ingredient>();
+        Scanner scan = new Scanner(System.in);
+        boolean running = true;
+        boolean intrrun = true;
+        while(running){
+            try{
+                System.out.println("\nДобро пожаловать в проектировщик шаурмы\n\nВведите число:\n1) Создать проект\n2) Выход");
+                int ch = scan.nextInt();
+                switch (ch) {
+                    case (1) -> {
+                        System.out.println("Введите число:\n1) Стандартная шаурма\n2) Неясная шаурма\n3) Мистическая шаурма странного типа легендарного вида");
+                        int ch2 = scan.nextInt();
+                        switch (ch2) {
+                            case (1) -> {
+                                name = "Стандартная шаурма";
+                                price = 120;
+                            }
+                            case (2) -> {
+                                name = "Неясная шаурма";
+                                price = 150;
+                            }
+                            case (3) -> {
+                                name = "Мистическая шаурма странного типа легендарного вида";
+                                price = 200;
+                            }
+                            default ->
+//                            running = false;
+                                    throw new Exception();
                         }
-                        break;
-                    case 5:
-//                        try{
-                            System.out.println("Введите первое число: ");
-                            int value11 = scan.nextInt();
-                            System.out.println("Введите второе число: ");
-                            int value12 = scan.nextInt();
-                            System.out.println("Результат возведения в степень:");
-                            System.out.println(Math.pow(value11, value12));
-//                            continue;
-//                        System.out.println("-");
-//                        }
-//                        catch (Exception e) {
-//                            System.out.println("Некорректный ввод");
-//                            continue;
-//                        }
-                        break;
-                    case 6:
-                        System.out.println("Введите число");
-                        int value13 = scan.nextInt();
-                        System.out.println("Найденный факториал");
-                        System.out.println(factorial(value13));
-                        break;
-                    default:
-                        System.out.println("Некорректная программа");
-                        // code block
+                        System.out.println("Введите число:\n1) Большевик\n2) Меньшевик\n3) Трудовик");
+                        int ch3 = scan.nextInt();
+                        switch (ch3) {
+                            case (1) -> {
+                                size = "Большевик";
+                                price += 100;
+                            }
+                            case (2) -> {
+                                size = "Меньшевик";
+                                price += 130;
+                            }
+                            case (3) -> {
+                                size = "Трудовик";
+                                price += 190;
+                            }
+                            default -> throw new Exception();
+                        }
+                        System.out.println("Введите число:\n1) Выбрать дополнительные ингредиенты\n2) Завершить заказ");
+                        int ch4 = scan.nextInt();
+                        switch (ch4) {
+                            case (1) -> {
+                                while (intrrun) {
+                                    System.out.println("Введите число:\n1) Лаваш со вкусом социал-дарвинизма\n2) Мясо монархиста\n3) Капуста демократа\n4) Картошка либералиста\n5) Тротил анахро-коммуниста\n6) Завершить заказ");
+                                    int ch41 = scan.nextInt();
+                                    switch (ch41) {
+                                        case (1) -> ings.add(new ingredient("Лаваш со вкусом социал-дарвинизма", 30));
+                                        case (2) -> ings.add(new ingredient("Мясо монархиста", 45));
+                                        case (3) -> ings.add(new ingredient("Капуста демократа", 56));
+                                        case (4) -> ings.add(new ingredient("Картошка либералиста", 78));
+                                        case (5) -> ings.add(new ingredient("Тротил анахро-коммуниста", 89));
+                                        case (6) -> {
+                                            shawarma shaw = new shawarma(name, price, size, ings);
+                                            System.out.format("Чертеж шаурмы:\nНазвание: %s\nРазмер: %s\nДополнительные ингредиенты:\n%s\nИтоговая цена: %s\n", shaw.getName(), shaw.getSize(), shaw.PrintAllIngredients(), shaw.GetTotallPrice() + "");
+                                            intrrun = false;
+                                        }
+                                        default -> {
+                                            intrrun = false;
+                                            shawarma errshaw = new shawarma(name, price, size, ings);
+                                            System.out.println("Фатальная ошибка\nПрограмма недопустила коллапса и слила ваш проект");
+                                            System.out.format("Чертеж шаурмы:\nНазвание: %s\nРазмер: %s\nДополнительные ингредиенты:\n%s\nИтоговая цена: %s\n", errshaw.getName(), errshaw.getSize(), errshaw.PrintAllIngredients(), errshaw.GetTotallPrice() + "");
+                                        }
+                                    }
+                                }
+                            }
+                            case (2) -> {
+                                shawarma shaw = new shawarma(name, price, size, ings);
+                                System.out.format("Чертеж шаурмы:\nНазвание: %s\nРазмер: %s\nИтоговая цена: %s\n", shaw.getName(), shaw.getSize(), shaw.GetTotallPrice() + "");
+                            }
+                            default -> throw new Exception();
+                        }
+                    }
+                    case (2) -> running = false;
+                    default -> System.out.println("Месье вы чорт");
                 }
-                System.out.println("\n\nВыберите операцию(число) затем введите значения:\n (1) Сложение\n (2) Вычитания\n (3) Деление\n (4) Умножение\n (5) Возведение в степень\n (6) Факториал\n (0) Выход\n\n\nВведите команду:");
-            }
-            catch (Exception e){
-                System.out.println("Некорректное значение");
-                System.out.println("\n\nВыберите операцию(число) затем введите значения:\n (1) Сложение\n (2) Вычитания\n (3) Деление\n (4) Умножение\n (5) Возведение в степень\n (6) Факториал\n (0) Выход\n\n\nВведите команду:");
-            }
 
+            } catch (Exception e){
+                System.out.println("Месье вы допустили серьезную конструкционную ошибку в процессе проектирования\nВиртуальная среда конструирования недопустила коллапса и всего лишь слила ваш проект,\nтеперь вам придется конструировать шаурму заново");
+                running = false;
+            }
         }
     }
-    public static void main(String[] args) {
-        MenuAndMore();
 
+    public static void main(String[] args) {
+        init();
     }
 }
